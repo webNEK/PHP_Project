@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <link rel="stylesheet" href="<?php echo e(asset('css/Edit_Account.css')); ?>" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" />
+</head>
+<body>
+    <div class="edit-account">
+        <div class="logo">
+            <div class="logo-text">NoteSphere</div>
+        </div>
+
+        <nav class="navbar">
+            <a href="/HomePage" class="nav-link">Home</a>
+            <a href="/List" class="nav-link">List</a>
+            <a href="/Account" class="nav-link">Account</a>
+        </nav>
+
+        <div class="search-bar">
+            <input type="text" placeholder="What are you looking for?" class="search-input">
+            <button class="search-btn">
+                <img src="./images/icon-search.png" alt="Search">
+            </button>
+        </div>
+
+        <div class="content">
+            <h1 class="page-title">Edit Account</h1>
+            
+            <form class="edit-form">
+                <div class="form-field">
+                    <label>Name</label>
+                    <input type="text" value="Current Name" class="input-dark">
+                </div>
+
+                <div class="form-field">
+                    <label>Email</label>
+                    <input type="email" value="current@email.com" class="input-dark">
+                </div>
+
+                <div class="form-field">
+                    <label>Field of study</label>
+                    <select class="input-dark">
+                        <option>Software Engineering</option>
+                        <option>Civil Engineering</option>
+                        <option>Energy Systems Engineering</option>
+                        <option>Electronics Engineering</option>
+						<option>None</option>
+                    </select>
+                </div>
+
+                <div class="form-field">
+                    <label>Grade</label>
+                    <select class="input-dark">
+                        <option>1st year</option>
+                        <option>2nd year</option>
+                        <option>3rd year</option>
+                        <option>4th year</option>
+                    </select>
+                </div>
+            </form>
+
+            <div class="actions">
+                <button class="save-btn">Save Changes</button>
+                <a href="/DeleteAccount" class="delete-link">Delete account</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html><?php /**PATH C:\Users\eyupm\NoteSphere\resources\views/Edit_account.blade.php ENDPATH**/ ?>

@@ -1,0 +1,294 @@
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+    .blobsvector-icon {
+        position: absolute;
+        top: 330px;
+        left: -44px;
+        width: 565.9px;
+        height: 444px;
+        object-fit: contain;
+    }
+    .blobsvector-icon1 {
+        position: absolute;
+        top: -61px;
+        left: 100px;
+        width: 583px;
+        height: 474.1px;
+        object-fit: contain;
+    }
+    .blobsvector-icon2 {
+        position: absolute;
+        top: 158px;
+        left: -50px;
+        width: 468px;
+        height: 418.9px;
+        object-fit: contain;
+    }
+    .sphereone-icon {
+        position: absolute;
+        top: 77px;
+        left: 250px;
+        width: 650px;
+        height: 650px;
+        object-fit: cover;
+    }
+    .contentframe {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        border-radius: 25px 0px 0px 25px;
+        background-color: #000;
+        width: 738px;
+        height: 721px;
+    }
+    .reserved-directs-to {
+        position: absolute;
+        top: 639.88px;
+        left: 116px;
+        display: inline-block;
+        width: 308px;
+        height: 16px;
+    }
+    .forgot-password {
+        position: absolute;
+        top: 339px;
+        left: 4px;
+        font-size: 18px;
+        color: #fff;
+        display: inline-block;
+        width: 291px;
+        height: 19px;
+    }
+        .forgot-password {
+        position: absolute;
+        top: 339px;
+        left: 4px;
+        font-size: 18px;
+        color: #fff;
+        display: inline-block;
+        width: 291px;
+        height: 19px;
+    }
+    
+    .log-in {
+        position: absolute;
+        top: 0px;
+        left: 111px;
+        font-weight: 500;
+        display: inline-block;
+        width: 81px;
+        height: 28px;
+    }
+    .buttonframe-parent {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 297px;
+        height: 42.7px;
+    }
+    .buttoncreateacc {
+        position: absolute;
+        top: 402px;
+        left: 114px;
+        width: 297px;
+        height: 42.7px;
+        font-size: 26px;
+        color: #000;
+    }
+    .password {
+        position: absolute;
+        top: 0px;
+        left: 4px;
+        font-weight: 500;
+        display: inline-block;
+        width: 229.8px;
+        height: 21px;
+    }
+    .enter-your-password {
+        position: absolute;
+        top: 12.03px;
+        left: 34px;
+        display: inline-block;
+        width: 220.1px;
+        height: 21.1px;
+    }
+    .input {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        border-radius: 20px;
+        background-color: rgba(176, 186, 195, 0.4);
+        width: 524.1px;
+        height: 45.8px;
+    }
+    .passwordinp {
+        position: absolute;
+        top: 32.09px;
+        left: 0px;
+        width: 524.1px;
+        height: 45.8px;
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.5);
+    }
+    .password-input {
+        position: absolute;
+        top: 253px;
+        left: 0px;
+        width: 524.1px;
+        height: 77.9px;
+    }
+    .email {
+        position: absolute;
+        top: 0px;
+        left: 1px;
+        font-weight: 500;
+        display: inline-block;
+        width: 165.6px;
+        height: 21.7px;
+    }
+    .enter-your-email {
+        position: absolute;
+        top: 11.97px;
+        left: 34.94px;
+        display: inline-block;
+        width: 183.4px;
+        height: 21.1px;
+    }
+    .emailinp {
+        position: absolute;
+        top: 29.44px;
+        left: 0px;
+        width: 524.1px;
+        height: 45.8px;
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.5);
+    }
+    .email-input {
+        position: absolute;
+        top: 131px;
+        left: 0px;
+        width: 524.1px;
+        height: 75.2px;
+    }
+    .title {
+        position: absolute;
+        top: 42px;
+        left: 239px;
+        font-size: 26px;
+        font-weight: 600;
+        color: #fff;
+        display: inline-block;
+        width: 80px;
+        height: 28px;
+    }
+    .title1 {
+        position: absolute;
+        top: 0px;
+        left: 134px;
+        font-size: 32px;
+        font-weight: 600;
+        color: #fff;
+        display: inline-block;
+        width: 273px;
+        height: 42px;
+    }
+    .content1 {
+        position: absolute;
+        top: 37px;
+        left: 90px;
+        width: 524.1px;
+        height: 655.9px;
+    }
+    .sign-in {
+        color: #fff;
+    }
+    .dont-have-an-container {
+        position: absolute;
+        top: 506px;
+        left: 94px;
+        font-size: 18px;
+        display: inline-block;
+        width: 299px;
+        height: 28.5px;
+        color: rgba(255, 255, 255, 0.81);
+    }
+    .content {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 738px;
+        height: 100%;
+    }
+    .login {
+        width: 100%;
+        position: relative;
+        background-color: #fff;
+        height: 100vh;
+        overflow: hidden;
+        text-align: left;
+        font-size: 20px;
+        color: #7c838a;
+        font-family: Poppins;
+    }
+    .login-form {
+        position: relative;
+        width: 100%;
+        padding: 20px;
+    }
+    .input {
+        width: 100%;
+        height: 45px;
+        border-radius: 10px;
+        background-color: rgba(176, 186, 195, 0.4);
+        border: none;
+        padding: 0 20px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+        color: #fff;
+    }
+    .input::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .buttonframe-parent {
+        border: none;
+        background: none;
+        cursor: pointer;
+        padding: 0;
+        width: 100%;
+    }
+
+    .buttonframe {
+        border-radius: 10px;
+        background-color: #fff;
+        width: 297px;
+        height: 42.2px;
+    }
+
+    .log-in {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #000;
+        font-family: 'Poppins', sans-serif;
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .forgot-password {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    .sign-in {
+        text-decoration: none;
+        color: #fff;
+        font-weight: 500;
+        margin-left: 5px;
+    }
