@@ -14,7 +14,7 @@
                     <p class="reserved-directs-to">Reserved directs to WebNEK</p>
                     <p class="already-have-a-container">
                         Already have an account?
-                        <a href="<?php echo e(url('/')); ?>" class="log-in">Log in</a>
+                        <a href="<?php echo e(url('/Login')); ?>" class="log-in">Log in</a>
                     </p>
                     <p class="admin-container">
                         Admin Login

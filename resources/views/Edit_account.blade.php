@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,52 +20,68 @@
         </nav>
 
         <div class="search-bar">
-            <input type="text" placeholder="What are you looking for?" class="search-input">
-            <button class="search-btn">
-                <img src="./images/icon-search.png" alt="Search">
-            </button>
+            <form method="GET" action="{{ route('search') }}" style="display:flex; width:100%;">
+                <input type="text" class="search-input" name="search" placeholder="What are you looking for?" value="{{ $query ?? '' }}">
+                <button class="search-button" type="submit">
+                    <img class="icon-search" alt="" src="./images/icon-search.png">
+                </button>
+            </form>
         </div>
 
         <div class="content">
             <h1 class="page-title">Edit Account</h1>
-            
-            <form class="edit-form">
+
+            @if(session('success'))
+                <div style="color:green; margin-bottom:10px;">{{ session('success') }}</div>
+            @endif
+
+            @if ($errors->any())
+                <div style="color:red; margin-bottom:10px;">
+                    @foreach ($errors->all() as $error)
+                        <div>{{ $error }}</div>
+                    @endforeach
+                </div>
+            @endif
+
+            <form class="edit-form" method="POST" action="{{ route('account.update') }}">
+                @csrf
+                @method('PUT')
                 <div class="form-field">
                     <label>Name</label>
-                    <input type="text" value="Current Name" class="input-dark">
+                    <input type="text" name="name" value="{{ old('name', $user->Username ?? '') }}" class="input-dark" required>
                 </div>
 
                 <div class="form-field">
                     <label>Email</label>
-                    <input type="email" value="current@email.com" class="input-dark">
+                    <input type="email" name="email" value="{{ old('email', $user->Email ?? '') }}" class="input-dark" required>
                 </div>
 
                 <div class="form-field">
                     <label>Field of study</label>
-                    <select class="input-dark">
-                        <option>Software Engineering</option>
-                        <option>Civil Engineering</option>
-                        <option>Energy Systems Engineering</option>
-                        <option>Electronics Engineering</option>
-						<option>None</option>
+                    <select name="field" class="input-dark" required>
+                        <option value="software" {{ old('field', $user->field ?? '') == 'software' ? 'selected' : '' }}>Software Engineering</option>
+                        <option value="civil" {{ old('field', $user->field ?? '') == 'civil' ? 'selected' : '' }}>Civil Engineering</option>
+                        <option value="energy" {{ old('field', $user->field ?? '') == 'energy' ? 'selected' : '' }}>Energy Systems Engineering</option>
+                        <option value="electronics" {{ old('field', $user->field ?? '') == 'electronics' ? 'selected' : '' }}>Electronics Engineering</option>
+                        <option value="none" {{ old('field', $user->field ?? '') == 'none' ? 'selected' : '' }}>None</option>
                     </select>
                 </div>
 
                 <div class="form-field">
                     <label>Grade</label>
-                    <select class="input-dark">
-                        <option>1st year</option>
-                        <option>2nd year</option>
-                        <option>3rd year</option>
-                        <option>4th year</option>
+                    <select name="grade" class="input-dark" required>
+                        <option value="1" {{ old('grade', $user->years ?? '') == '1' ? 'selected' : '' }}>1st year</option>
+                        <option value="2" {{ old('grade', $user->years ?? '') == '2' ? 'selected' : '' }}>2nd year</option>
+                        <option value="3" {{ old('grade', $user->years ?? '') == '3' ? 'selected' : '' }}>3rd year</option>
+                        <option value="4" {{ old('grade', $user->years ?? '') == '4' ? 'selected' : '' }}>4th year</option>
                     </select>
                 </div>
-            </form>
 
-            <div class="actions">
-                <button class="save-btn">Save Changes</button>
-                <a href="/DeleteAccount" class="delete-link">Delete account</a>
-            </div>
+                <div class="actions">
+                    <button class="save-btn" type="submit">Save Changes</button>
+                    <a href="/Account/DeleteAccount" class="delete-account action-link" onclick="return confirm('Are you sure you want to delete your account?');" style="color:white;">Delete account</a>
+                </div>
+            </form>
         </div>
     </div>
 </body>

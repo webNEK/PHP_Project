@@ -30,8 +30,6 @@ class SignupController
             'Email'          => $request->input('email'),
             'PasswordHash'   => Hash::make($request->input('password')), // Şifreyi hashle!
             'DisplayName'    => $request->input('fullname'),
-            'Bio'            => '',
-            'ProfilePicture' => '',
             'CreatedAt'      => now(),
             'years'          => null,
             'field'          => null,

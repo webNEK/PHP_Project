@@ -17,7 +17,7 @@
 
         <nav class="navbar">
             <a href="/HomePage" class="nav-link">Home</a>
-            <a href="/List" class="nav-link">Saved</a>
+            <a href="/List" class="nav-link">List</a>
             <a href="/Account" class="nav-link">Account</a>
         </nav>
 

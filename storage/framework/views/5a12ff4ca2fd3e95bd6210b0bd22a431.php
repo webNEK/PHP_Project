@@ -23,38 +23,42 @@
         <div class="for-you-section">
               <div class="title1">List</div>
         </div>
+<div class="search">
+    <form method="GET" action="<?php echo e(route('search')); ?>" style="display:flex; width:100%;">
+        <input type="text" class="search-input" name="search" placeholder="What are you looking for?" value="<?php echo e($query ?? ''); ?>">
+        <button class="search-button" type="submit">
+            <img class="icon-search" alt="" src="./images/icon-search.png">
+        </button>
+    </form>
+</div>
 
-        <div class="search">
-            <input type="text" class="search-input" placeholder="What are you looking for?">
-            <button class="search-button">
-                <img class="icon-search" alt="" src="./images/icon-search.png">
-            </button>
-        </div>
+        <?php if(isset($query) && $query && $posts->isEmpty()): ?>
+            <div class="div">No notes found for "<?php echo e($query); ?>".</div>
+        <?php elseif($posts->isNotEmpty()): ?>
+            <div class="carousel-container">
+                <button class="carousel-arrow left" onclick="moveCarousel(-1)">&#8592;</button>
+                <div class="carousel-track" id="carouselTrack">
+                    <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <div class="carousel-card">
+                            <img src="<?php echo e(asset('images/textimage.png')); ?>" alt="Post Image" class="carousel-image">
+                            <div class="carousel-content">
+                                <div class="carousel-title"><?php echo e($post->Title); ?></div>
+                                <div class="carousel-snippet" style="color:#222; font-size:14px; margin-bottom:10px;">
+                                    <?php echo e(\Illuminate\Support\Str::limit($post->Content, 100)); ?>
 
-<?php if($posts->isEmpty()): ?>
-    <div class="div">You haven't liked any notes yet.</div>
-<?php else: ?>
-    <!-- Carousel Görünümü -->
-    <div class="carousel-container">
-        <button class="carousel-arrow left" onclick="moveCarousel(-1)">&#8592;</button>
-        <div class="carousel-track" id="carouselTrack">
-            <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="carousel-card">
-                    <img src="<?php echo e(asset('images/textimage.png')); ?>" alt="Post Image" class="carousel-image">
-                    <div class="carousel-content">
-                        <div class="carousel-title"><?php echo e($post->Title); ?></div>
-                        <a href="<?php echo e(url('/Read?id='.$post->PostID)); ?>" class="carousel-readmore">
-                            Readmore
-                            <img src="<?php echo e(asset('images/ReadMore.png')); ?>" alt="arrow" class="carousel-arrow-img">
-                        </a>
-                    </div>
+                                </div>
+                                <a href="<?php echo e(url('/Read?id='.$post->PostID)); ?>" class="carousel-readmore">
+                                    Readmore
+                                    <img src="<?php echo e(asset('images/ReadMore.png')); ?>" alt="arrow" class="carousel-arrow-img">
+                                </a>
+                            </div>
+                        </div>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        </div>
-        <button class="carousel-arrow right" onclick="moveCarousel(1)">&#8594;</button>
-    </div>
+                <button class="carousel-arrow right" onclick="moveCarousel(1)">&#8594;</button>
+            </div>
+        <?php endif; ?>
 
-<?php endif; ?>
       </div>
 </body>
 </html><?php /**PATH C:\Users\eyupm\NoteSphere\resources\views/List.blade.php ENDPATH**/ ?>

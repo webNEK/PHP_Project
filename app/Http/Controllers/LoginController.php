@@ -14,15 +14,22 @@ class LoginController
         $password = $request->input('password', '');
 
         $user = Kullanicilar::getByEmail($email);
-
-        // Sütun adı veritabanında nasılsa ona göre kullanın!
         if ($user && Hash::check($password, $user->PasswordHash)) 
         {
             Session::put('user', $user->toArray());
-            return redirect('/HomePage');
-        } else 
-        {
-            return redirect('/Login');
+            $response = redirect('/HomePage');
+            if ($request->has('remember')) {
+                $loginData = [
+                    'email' => $email,
+                    'password' => $password,
+                    'remember' => true
+                ];
+                $response->withCookie(cookie('remembered_login', json_encode($loginData), 60*24));
+            } else {
+                $response->withCookie(cookie('remembered_login', '', -1)); // Cookie sil
+            }
+            return $response;
         }
     }
+
 }

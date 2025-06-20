@@ -33,12 +33,19 @@
             <div class="write-left">
                 <form class="writing-container" method="POST" action="<?php echo e(route('write.post')); ?>">
                     <?php echo csrf_field(); ?>
-                    <input type="text" class="title-input" name="title" placeholder="Title" value="<?php echo e(old('title')); ?>" required>
-                    <textarea class="content-input" name="content" placeholder="Write here..." required><?php echo e(old('content')); ?></textarea>
+                    <?php if(isset($post) && $post->PostID): ?>
+                        <input type="hidden" name="id" value="<?php echo e($post->PostID); ?>">
+                    <?php endif; ?>
+                    <input type="text" class="title-input" name="title" placeholder="Title" value="<?php echo e(old('title',$post->Title ?? '')); ?>" required>
+                    <textarea class="content-input" name="content" placeholder="Write here..." required><?php echo e(old('content',$post->Content ?? '')); ?></textarea>
                     <div class="button-container">
-                        <button type="button" class="action-btn edit-btn">
-                            Edit <img src="<?php echo e(asset('images/edit-3.svg')); ?>" alt="Edit" />
-                        </button>
+                        <?php if(isset($post) && $post->PostID): ?>
+                            <a href="<?php echo e(route('write.delete', ['id' => $post->PostID])); ?>" 
+                            class="action-btn edit-btn"
+                            onclick="return confirm('Are you sure you want to delete this post?')">
+                                Delete <img src="<?php echo e(asset('images/çöp_kutusu.jpg')); ?>" alt="Delete" />
+                            </a>
+                        <?php endif; ?>
                         <button type="submit" name="publish" class="action-btn publish-btn">
                             Publish <img src="<?php echo e(asset('images/icon-send.png')); ?>" alt="Publish">
                         </button>
@@ -47,55 +54,69 @@
                         </button>
                     </div>
 
-                    <div class="questions-container">
+                    <div class="questions-container" style="top: -100px;">
                         <div class="question-group">
                             <h2 class="question-title">Which field of study this belong to?</h2>
                             <div class="radio-group">
                                 <label class="radio-option">
-                                    <input type="radio" name="field" value="software" <?php echo e(old('field') == 'software' ? 'checked' : ''); ?> required>
+                                    <input type="radio" name="field" value="software" <?php echo e(old('field', $post->field ?? '') == 'software' ? 'checked' : ''); ?> required>
                                     <span class="radio-custom"></span>
                                     <span class="option-label">Software Engineering</span>
                                 </label>
                                 <label class="radio-option">
-                                    <input type="radio" name="field" value="civil" <?php echo e(old('field') == 'civil' ? 'checked' : ''); ?>>
+                                    <input type="radio" name="field" value="civil" <?php echo e(old('field', $post->field ?? '') == 'civil' ? 'checked' : ''); ?>>
                                     <span class="radio-custom"></span>
                                     <span class="option-label">Civil Engineering</span>
                                 </label>
                                 <label class="radio-option">
-                                    <input type="radio" name="field" value="energy" <?php echo e(old('field') == 'energy' ? 'checked' : ''); ?>>
+                                    <input type="radio" name="field" value="energy" <?php echo e(old('field', $post->field ?? '') == 'energy' ? 'checked' : ''); ?>>
                                     <span class="radio-custom"></span>
                                     <span class="option-label">Energy Systems Engineering</span>
                                 </label>
                                 <label class="radio-option">
-                                    <input type="radio" name="field" value="electronics" <?php echo e(old('field') == 'electronics' ? 'checked' : ''); ?>>
+                                    <input type="radio" name="field" value="electronics" <?php echo e(old('field', $post->field ?? '') == 'electronics' ? 'checked' : ''); ?>>
                                     <span class="radio-custom"></span>
                                     <span class="option-label">Electronics and Communication Engineering</span>
                                 </label>
+                                <?php if(session('user')['field'] == 'admin'): ?>
+                                    <label class="radio-option">
+                                        <input type="radio" name="field" value="admin" <?php echo e(old('field', $post->field ?? '') == 'admin' ? 'checked' : ''); ?>>
+                                        <span class="radio-custom"></span>
+                                        <span class="option-label">Admin</span>
+                                    </label>
+                                <?php endif; ?>
                             </div>
                         </div>
                         <div class="question-group">
                             <h2 class="question-title">What grade this belong to?</h2>
                             <div class="radio-group">
                                 <label class="radio-option">
-                                    <input type="radio" name="grade" value="1" <?php echo e(old('grade') == '1' ? 'checked' : ''); ?> required>
+                                    <input type="radio" name="grade" value="1" <?php echo e(old('grade', $post->grade ?? '') == '1' ? 'checked' : ''); ?> required>
                                     <span class="radio-custom"></span>
                                     <span class="option-label">1st year</span>
                                 </label>
                                 <label class="radio-option">
-                                    <input type="radio" name="grade" value="2" <?php echo e(old('grade') == '2' ? 'checked' : ''); ?>>
+                                    <input type="radio" name="grade" value="2" <?php echo e(old('grade', $post->grade ?? '') == '2' ? 'checked' : ''); ?>>
                                     <span class="radio-custom"></span>
                                     <span class="option-label">2nd year</span>
                                 </label>
                                 <label class="radio-option">
-                                    <input type="radio" name="grade" value="3" <?php echo e(old('grade') == '3' ? 'checked' : ''); ?>>
+                                    <input type="radio" name="grade" value="3" <?php echo e(old('grade', $post->grade ?? '') == '3' ? 'checked' : ''); ?>>
                                     <span class="radio-custom"></span>
                                     <span class="option-label">3rd year</span>
                                 </label>
                                 <label class="radio-option">
-                                    <input type="radio" name="grade" value="4" <?php echo e(old('grade') == '4' ? 'checked' : ''); ?>>
+                                    <input type="radio" name="grade" value="4" <?php echo e(old('grade', $post->grade ?? '') == '4' ? 'checked' : ''); ?>>
                                     <span class="radio-custom"></span>
                                     <span class="option-label">4th year</span>
                                 </label>
+                                    <?php if(session('user')['field'] == 'admin'): ?>
+                                    <label class="radio-option">
+                                        <input type="radio" name="grade" value="admin" <?php echo e(old('grade', $post->grade ?? '') == 'admin' ? 'checked' : ''); ?>>
+                                        <span class="radio-custom"></span>
+                                        <span class="option-label">Admin</span>
+                                    </label>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>

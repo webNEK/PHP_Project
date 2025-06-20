@@ -26,28 +26,52 @@
               <div class="title1">Account</div>
         </div>
         
-        <div class="user-information">User Information</div>
-        <div class="uploaded-notes">Uploaded Notes</div>
-        <a href="/EditAccount" class="edit-profile action-link">Edit Profile</a>
-        <a href="/DeleteAccount" class="delete-account action-link">Delete account</a>
-        
+        <div class="user-information" >User Information</div>
+        <div class="uploaded-notes">
+            <div class="uploaded-notes-title">Uploaded Notes</div>
+            <div class="uploaded-notes-list">
+                @if($posts->isEmpty())
+                    <div class="note-item empty">No notes yet.</div>
+                @else
+                    @foreach($posts as $post)
+                        <div class="note-item">
+                             {{ $post->Title }}
+                                <span class="note-span"style="">
+                                    {{ $post->status }}
+                                </span>
+                            <a href="{{ url('/write?id='.$post->PostID) }}" class="note-read-link">Edit</a>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+        <div>
+            <a href="/EditAccount" class="edit-profile action-link">Edit Profile</a>
+        </div>
+        <div>
+            <a href="/Account/DeleteAccount" class="delete-account action-link" onclick="return confirm('Are you sure you want to delete your account?');">Delete account</a>
+        </div>
+        <div>
+            <a href="{{ route('account.logout') }}" class="logout action-link" style="z-index:2">Logout</a>
+        </div>
         <div class="search">
-            <input type="text" class="search-input" placeholder="What are you looking for?">
-            <button class="search-button">
-                <img class="icon-search" alt="" src="{{asset('./images/icon-search.png')}}">
-            </button>
+            <form method="GET" action="{{ route('search') }}" style="display:flex; width:100%;">
+                <input type="text" class="search-input" name="search" placeholder="What are you looking for?" value="{{ $query ?? '' }}">
+                <button class="search-button" type="submit">
+                    <img class="icon-search" alt="" src="./images/icon-search.png">
+                </button>
+            </form>
         </div>
 
         <!-- Dinamik kullanıcı bilgileri -->
-        <div style="position:absolute;top:220px;left:28px;width:400px;">
-            <div><b>Name:</b> {{ $user->Username ?? '-' }}</div>
-            <div><b>Email:</b> {{ $user->Email ?? '-' }}</div>
-            <div><b>Password:</b> {{ ($user->Password) }}</div>
-            <div><b>Field of Study:</b> {{ $user->field ?? '-' }}</div>
-            <div><b>Grade:</b> {{ $user->years ?? '-' }}</div>
-            <div><b>DisplayName:</b> {{ $user->DisplayName }}</div>
-            <div><b>Bio:</b> {{ $user->Bio }}</div>
-            <div><b>Created:</b> {{ $user->Created }}</div>
+        <div class="user-details">
+            <div>Name: {{ $user->Username ?? '-' }}</div>
+            <div>Email: {{ $user->Email ?? '-' }}</div>
+            <div>Password:{{ ($user->Password) }}</div>
+            <div>Field of Study: {{ $user->field ?? '-' }}</div>
+            <div>Grade: {{ $user->years ?? '-' }}</div>
+            <div>DisplayName: {{ $user->DisplayName }}</div>
+            <div>Created: {{ $user->CreatedAt }}</div>
         </div>
       </div>
 </body>

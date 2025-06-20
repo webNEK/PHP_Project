@@ -17,12 +17,7 @@ left:600px;
 z-index: 1;
 top:20px;
 }
-.questions-container{
-    position: absolute;
-    top: -20px;
-    right: -540px;
-    width: 400px;
-}
+
 .logo {
   	position: absolute;
   	top: 28px;
@@ -145,9 +140,10 @@ top:20px;
 }
 .questions-container {
     position: absolute;
-    top: 100px;
-    right: 100px;
+    top: -100px;
+    right: -70%;
     width: 400px;
+    
 }
 
 .question-group {

@@ -12,7 +12,7 @@ class Kullanicilar extends Model
 
     // Eğer mass assignment için alanlar:
     protected $fillable = [
-        'Username', 'Email', 'PasswordHash', 'DisplayName', 'Bio', 'ProfilePicture', 'CreatedAt', 'years', 'field'
+        'Username', 'Email', 'PasswordHash', 'DisplayName', 'CreatedAt', 'years', 'field'
     ];
 
     // Eloquent ile ekstra fonksiyonlar ekleyebilirsiniz

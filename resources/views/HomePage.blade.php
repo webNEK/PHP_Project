@@ -26,9 +26,15 @@
     		<div class="content">
       			<div class="add-your-note-parent">
         				<button class="add-your-note" >
-							<a href="{{ url('/write') }}" class="add-note-link">
- 								+Add your note
-							</a>
+							@if($user['field']=='admin')
+								<a href="{{ url('/write') }}" class="add-note-link">
+ 									Make an anouncement
+								</a>
+							@else
+								<a href="{{ url('/write') }}" class="add-note-link">
+ 									+Add your note
+								</a>
+							@endif
   							<img class="arrows-directionsright" alt="" src="./images/add_note.png">
 						</button>
       			</div>
@@ -39,15 +45,19 @@
     		</div>
 
     		<div class="hello">
-      			<div class="title2">Good morning! {{ $user['Username'] ?? 'User' }}</div>
+      			<div class="title2">{{ $time }} {{ $user['Username'] ?? 'User' }}</div>
     		</div>
 
-    		<div class="search">
-    <input type="text" class="search-input" placeholder="What are you looking for?">
-    <button class="search-button">
-        <img class="icon-search" alt="" src="./images/icon-search.png">
-    </button>
-</div>
+
+			<div class="search">
+				<form method="GET" action="{{ route('search') }}" style="display:flex; width:100%;">
+					<input type="text" class="search-input" name="search" placeholder="What are you looking for?" value="{{ $query ?? '' }}">
+					<button class="search-button" type="submit">
+						<img class="icon-search" alt="" src="./images/icon-search.png">
+					</button>
+				</form>
+
+			</div>
 
 
     		<div class="carousel-container">

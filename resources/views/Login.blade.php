@@ -17,27 +17,36 @@
             <div class="contentframe"></div>
             <div class="content1">
                 <div class="reserved-directs-to">Reserved directs to WebNEK</div>
-                <a href="/" class="forgot-password">Forgot Password?</a>
-                
+              
+            
                 <form action="/Login" method="POST" class="login-form">
                     @csrf
                     <div class="title1">WELCOME BACK!</div>
                     <div class="title">Login</div>
-
+                    @php
+                        $remembered = json_decode(request()->cookie('remembered_login'), true);
+                    @endphp
                     <div class="email-input">
                         <label class="email">Email</label>
                         <div class="emailinp">
-                            <input type="email" class="input" id="email" name="email" placeholder="Enter your Email here" required>
+                            <input type="email" class="input" id="email" name="email" placeholder="Enter your Email here"
+                                value="{{ $remembered['email'] ?? '' }}" required>
                         </div>
                     </div>
 
                     <div class="password-input">
                         <label class="password">Password</label>
                         <div class="passwordinp">
-                            <input type="password" class="input"  id="password" name="password" placeholder="Enter your Password here" required>
+                            <input type="password" class="input" id="password" name="password" placeholder="Enter your Password here"
+                                value="{{ $remembered['password'] ?? '' }}" required>
                         </div>
                     </div>
-                   
+                    <div class="forgot-password">
+                    <label style="font-size:15px; color:#fff;">
+                        <input type="checkbox" name="remember" {{ !empty($remembered['remember']) ? 'checked' : '' }}>
+                            Remember me
+                    </label>
+                    </div>    
                     <div class="buttoncreateacc">
                         <button type="submit" class="buttonframe-parent">
                             <div class="buttonframe"></div>

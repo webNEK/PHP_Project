@@ -40,6 +40,7 @@ class Yorumlar extends Model
         return self::where('PostID', $postID)
                    ->orderBy('CreatedAt', 'desc')
                    ->get();
+
     }
 
     // Yorum güncelle (Content)

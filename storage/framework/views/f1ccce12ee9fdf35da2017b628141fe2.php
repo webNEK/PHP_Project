@@ -26,28 +26,54 @@
               <div class="title1">Account</div>
         </div>
         
-        <div class="user-information">User Information</div>
-        <div class="uploaded-notes">Uploaded Notes</div>
-        <a href="/EditAccount" class="edit-profile action-link">Edit Profile</a>
-        <a href="/DeleteAccount" class="delete-account action-link">Delete account</a>
-        
+        <div class="user-information" >User Information</div>
+        <div class="uploaded-notes">
+            <div class="uploaded-notes-title">Uploaded Notes</div>
+            <div class="uploaded-notes-list">
+                <?php if($posts->isEmpty()): ?>
+                    <div class="note-item empty">No notes yet.</div>
+                <?php else: ?>
+                    <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <div class="note-item">
+                             <?php echo e($post->Title); ?>
+
+                                <span class="note-span"style="">
+                                    <?php echo e($post->status); ?>
+
+                                </span>
+                            <a href="<?php echo e(url('/write?id='.$post->PostID)); ?>" class="note-read-link">Edit</a>
+                        </div>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                <?php endif; ?>
+            </div>
+        </div>
+        <div>
+            <a href="/EditAccount" class="edit-profile action-link">Edit Profile</a>
+        </div>
+        <div>
+            <a href="/Account/DeleteAccount" class="delete-account action-link" onclick="return confirm('Are you sure you want to delete your account?');">Delete account</a>
+        </div>
+        <div>
+            <a href="<?php echo e(route('account.logout')); ?>" class="logout action-link" style="z-index:2">Logout</a>
+        </div>
         <div class="search">
-            <input type="text" class="search-input" placeholder="What are you looking for?">
-            <button class="search-button">
-                <img class="icon-search" alt="" src="<?php echo e(asset('./images/icon-search.png')); ?>">
-            </button>
+            <form method="GET" action="<?php echo e(route('search')); ?>" style="display:flex; width:100%;">
+                <input type="text" class="search-input" name="search" placeholder="What are you looking for?" value="<?php echo e($query ?? ''); ?>">
+                <button class="search-button" type="submit">
+                    <img class="icon-search" alt="" src="./images/icon-search.png">
+                </button>
+            </form>
         </div>
 
         <!-- Dinamik kullanıcı bilgileri -->
-        <div style="position:absolute;top:220px;left:28px;width:400px;">
-            <div><b>Name:</b> <?php echo e($user->Username ?? '-'); ?></div>
-            <div><b>Email:</b> <?php echo e($user->Email ?? '-'); ?></div>
-            <div><b>Password:</b> <?php echo e(($user->Password)); ?></div>
-            <div><b>Field of Study:</b> <?php echo e($user->field ?? '-'); ?></div>
-            <div><b>Grade:</b> <?php echo e($user->years ?? '-'); ?></div>
-            <div><b>DisplayName:</b> <?php echo e($user->DisplayName); ?></div>
-            <div><b>Bio:</b> <?php echo e($user->Bio); ?></div>
-            <div><b>Created:</b> <?php echo e($user->Created); ?></div>
+        <div class="user-details">
+            <div>Name: <?php echo e($user->Username ?? '-'); ?></div>
+            <div>Email: <?php echo e($user->Email ?? '-'); ?></div>
+            <div>Password:<?php echo e(($user->Password)); ?></div>
+            <div>Field of Study: <?php echo e($user->field ?? '-'); ?></div>
+            <div>Grade: <?php echo e($user->years ?? '-'); ?></div>
+            <div>DisplayName: <?php echo e($user->DisplayName); ?></div>
+            <div>Created: <?php echo e($user->CreatedAt); ?></div>
         </div>
       </div>
 </body>
