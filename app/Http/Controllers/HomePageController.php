@@ -34,10 +34,11 @@ class HomePageController
         } elseif ($user && $user['field']) {
             $posts = yazılar::where('status', 'published')
                 ->whereIn('field', [$user['field'], 'admin'])
+                ->orderBy('CreatedAt', 'desc')
                 ->get();
         }
 
         return view('HomePage', compact('user', 'posts', 'time'));
-}
+    }
 
 }

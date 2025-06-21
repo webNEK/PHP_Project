@@ -1,4 +1,3 @@
-{{-- filepath: resources/views/Read.blade.php --}}
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,7 +65,6 @@
                 @endforelse
             </div>
 
-            <!-- Yorum ekleme formu klasik POST -->
             <form method="POST" action="{{ route('read.comment') }}">
                 @csrf
                 <input type="hidden" name="post_id" value="{{ $post->PostID }}">

@@ -18,14 +18,11 @@ class AdminLoginController
 
         $user = Kullanicilar::where('Email', $request->email)->first();
 
-        // Sadece admin email veya rol kontrolü
         if ($user && Hash::check($request->password, $user->PasswordHash) && $user->Email === 'admin@admin') {
             Session::put('user', $user->toArray());
             Session::put('is_admin', true);
-            
-            return redirect('/HomePage'); // Admin paneline yönlendir
+            return redirect('/HomePage');
         }
-
         return redirect('/AdminLogin')->withErrors(['email' => 'Unauthorized. Only admin can login here.']);
     }
 }

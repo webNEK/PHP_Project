@@ -17,8 +17,17 @@
             <div class="contentframe"></div>
             <div class="content1">
                 <div class="reserved-directs-to">Reserved directs to WebNEK</div>
-              
             
+                    <?php if($errors->any()): ?>
+                        <div style="color:red; margin-bottom:10px; top: 20px;">
+                            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <script>
+                                    alert("<?php echo e($error); ?>");
+                                </script>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </div>
+                    <?php endif; ?>
+
                 <form action="/Login" method="POST" class="login-form">
                     <?php echo csrf_field(); ?>
                     <div class="title1">WELCOME BACK!</div>

@@ -43,7 +43,7 @@
                             <a href="{{ route('write.delete', ['id' => $post->PostID]) }}" 
                             class="action-btn edit-btn"
                             onclick="return confirm('Are you sure you want to delete this post?')">
-                                Delete <img src="{{ asset('images/çöp_kutusu.jpg') }}" alt="Delete" />
+                                Delete <img src="{{ asset('images/cop.png') }}" alt="Delete" />
                             </a>
                         @endif
                         <button type="submit" name="publish" class="action-btn publish-btn">

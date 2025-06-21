@@ -11,7 +11,6 @@ class Edit_accountController
     public function edit()
     {
         $userArr = session('user');
-        if (!$userArr) return redirect('/Login');
         $user = kullanicilar::find($userArr['UserId']);
         return view('Edit_account', compact('user'));
     }
@@ -19,7 +18,6 @@ class Edit_accountController
     public function update(Request $request)
     {
         $userArr = session('user');
-        if (!$userArr) return redirect('/Login');
         $user = kullanicilar::find($userArr['UserId']);
 
         $request->validate([

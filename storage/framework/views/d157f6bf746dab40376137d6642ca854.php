@@ -19,7 +19,7 @@
             <a href="/Account" class="nav-link">Account</a>
         </nav>
 
-        <div class="search-bar">
+        <div class="search">
             <form method="GET" action="<?php echo e(route('search')); ?>" style="display:flex; width:100%;">
                 <input type="text" class="search-input" name="search" placeholder="What are you looking for?" value="<?php echo e($query ?? ''); ?>">
                 <button class="search-button" type="submit">
@@ -30,18 +30,6 @@
 
         <div class="content">
             <h1 class="page-title">Edit Account</h1>
-
-            <?php if(session('success')): ?>
-                <div style="color:green; margin-bottom:10px;"><?php echo e(session('success')); ?></div>
-            <?php endif; ?>
-
-            <?php if($errors->any()): ?>
-                <div style="color:red; margin-bottom:10px;">
-                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <div><?php echo e($error); ?></div>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </div>
-            <?php endif; ?>
 
             <form class="edit-form" method="POST" action="<?php echo e(route('account.update')); ?>">
                 <?php echo csrf_field(); ?>

@@ -19,7 +19,7 @@
             <a href="/Account" class="nav-link">Account</a>
         </nav>
 
-        <div class="search-bar">
+        <div class="search">
             <form method="GET" action="{{ route('search') }}" style="display:flex; width:100%;">
                 <input type="text" class="search-input" name="search" placeholder="What are you looking for?" value="{{ $query ?? '' }}">
                 <button class="search-button" type="submit">
@@ -30,18 +30,6 @@
 
         <div class="content">
             <h1 class="page-title">Edit Account</h1>
-
-            @if(session('success'))
-                <div style="color:green; margin-bottom:10px;">{{ session('success') }}</div>
-            @endif
-
-            @if ($errors->any())
-                <div style="color:red; margin-bottom:10px;">
-                    @foreach ($errors->all() as $error)
-                        <div>{{ $error }}</div>
-                    @endforeach
-                </div>
-            @endif
 
             <form class="edit-form" method="POST" action="{{ route('account.update') }}">
                 @csrf

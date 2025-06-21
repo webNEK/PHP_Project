@@ -33,7 +33,7 @@
 </div>
 
         @if(isset($query) && $query && $posts->isEmpty())
-            <div class="div">No notes found for "{{ $query }}".</div>
+            <div style="z-index:2;"class="div">No notes found for "{{ $query }}".</div>
         @elseif($posts->isNotEmpty())
             <div class="carousel-container">
                 <button class="carousel-arrow left" onclick="moveCarousel(-1)">&#8592;</button>
@@ -44,7 +44,7 @@
                             <div class="carousel-content">
                                 <div class="carousel-title">{{ $post->Title }}</div>
                                 <div class="carousel-snippet" style="color:#222; font-size:14px; margin-bottom:10px;">
-                                    {{ \Illuminate\Support\Str::limit($post->Content, 100) }}
+                                    {{ Str::limit($post->Content, 100) }}
                                 </div>
                                 <a href="{{ url('/Read?id='.$post->PostID) }}" class="carousel-readmore">
                                     Readmore

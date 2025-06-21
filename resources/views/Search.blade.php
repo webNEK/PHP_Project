@@ -45,7 +45,7 @@
                     <div class="carousel-content">
                         <div class="carousel-title">{{ $post->Title }}</div>
                         <div class="carousel-snippet" style="color:#222; font-size:14px; margin-bottom:10px;">
-                            {{ \Illuminate\Support\Str::limit($post->Content, 100) }}
+                            {{ Str::limit($post->Content, 100) }}
                         </div>
                         <a href="{{ url('/Read?id='.$post->PostID) }}" class="carousel-readmore">
                             Readmore

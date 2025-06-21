@@ -34,7 +34,7 @@
                     <div class="note-item empty">No notes yet.</div>
                 <?php else: ?>
                     <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <div class="note-item">
+                        <div c  lass="note-item">
                              <?php echo e($post->Title); ?>
 
                                 <span class="note-span"style="">

@@ -18,25 +18,18 @@ class InformationController
 
         // Oturumdan kullanıcıyı al
         $userArr = Session::get('user');
-        if (!$userArr) {
-            return redirect('/Login');
-        }
 
-        // Kullanıcıyı veritabanından bul
         $user = Kullanicilar::find($userArr['UserId']);
         if (!$user) {
             return redirect('/Login');
         }
 
-        // Alanları güncelle
         $user->years = $request->input('study-year');
         $user->field = $request->input('field');
         $user->save();
 
-        // Session'ı güncelle
         Session::put('user', $user->toArray());
 
-        // HomePage'e yönlendir
         return redirect('/HomePage');
     }
 }

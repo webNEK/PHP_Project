@@ -33,7 +33,7 @@
 </div>
 
         <?php if(isset($query) && $query && $posts->isEmpty()): ?>
-            <div class="div">No notes found for "<?php echo e($query); ?>".</div>
+            <div style="z-index:2;"class="div">No notes found for "<?php echo e($query); ?>".</div>
         <?php elseif($posts->isNotEmpty()): ?>
             <div class="carousel-container">
                 <button class="carousel-arrow left" onclick="moveCarousel(-1)">&#8592;</button>
@@ -44,7 +44,7 @@
                             <div class="carousel-content">
                                 <div class="carousel-title"><?php echo e($post->Title); ?></div>
                                 <div class="carousel-snippet" style="color:#222; font-size:14px; margin-bottom:10px;">
-                                    <?php echo e(\Illuminate\Support\Str::limit($post->Content, 100)); ?>
+                                    <?php echo e(Str::limit($post->Content, 100)); ?>
 
                                 </div>
                                 <a href="<?php echo e(url('/Read?id='.$post->PostID)); ?>" class="carousel-readmore">

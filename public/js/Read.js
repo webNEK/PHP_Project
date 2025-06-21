@@ -16,10 +16,6 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(res => res.json())
         .then(data => {
-            if (data.error) {
-                alert('Giriş yapmalısınız!');
-                return;
-            }
             btn.setAttribute('data-liked', data.liked ? '1' : '0');
             btn.classList.toggle('active', data.liked);
             likeCountSpan.textContent = data.likeCount;

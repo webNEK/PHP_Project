@@ -17,8 +17,17 @@
             <div class="contentframe"></div>
             <div class="content1">
                 <div class="reserved-directs-to">Reserved directs to WebNEK</div>
-              
             
+                    @if ($errors->any())
+                        <div style="color:red; margin-bottom:10px; top: 20px;">
+                            @foreach ($errors->all() as $error)
+                                <script>
+                                    alert("{{ $error }}");
+                                </script>
+                            @endforeach
+                        </div>
+                    @endif
+
                 <form action="/Login" method="POST" class="login-form">
                     @csrf
                     <div class="title1">WELCOME BACK!</div>

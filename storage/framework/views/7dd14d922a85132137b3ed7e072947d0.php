@@ -23,9 +23,11 @@
 
                     
                     <?php if($errors->any()): ?>
-                        <div style="color:red; margin-bottom:10px;">
+                        <div style="color:red; margin-bottom:10px; top: 20px;">
                             <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <div><?php echo e($error); ?></div>
+                                <script>
+                                    alert("<?php echo e($error); ?>");
+                                </script>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
                     <?php endif; ?>
@@ -35,14 +37,14 @@
                         <div class="fullname-input">
                             <label for="fullname" class="full-name">Full Name</label>
                             <div class="nameinp">
-                                <input type="text" id="fullname" name="fullname" class="input" placeholder="Enter your Full Name here" value="<?php echo e(old('fullname')); ?>" required>
+                                <input type="text" id="fullname" name="fullname" class="input" placeholder="Enter your Full Name here"  required>
                             </div>
                         </div>
 
                         <div class="email-input">
                             <label for="email" class="email">Email</label>
                             <div class="emailinp">
-                                <input type="email" id="email" name="email" class="input" placeholder="Enter your Email here" value="<?php echo e(old('email')); ?>" required>
+                                <input type="email" id="email" name="email" class="input" placeholder="Enter your Email here"  required>
                             </div>
                         </div>
 

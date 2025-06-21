@@ -16,15 +16,12 @@ class SignupController
 
     public function register(Request $request)
     {
-        // Validasyon
         $request->validate([
-            'fullname'          => 'required|string|max:255',
+            'fullname'          => 'required|string|max:255|unique:kullanicilar,Username',
             'email'             => 'required|email|unique:kullanicilar,Email',
             'password'          => 'required|min:4',
             'confirm_password'  => 'required|same:password',
         ]);
-
-        // Kullanıcıyı oluştur
         $user = Kullanicilar::create([
             'Username'       => $request->input('fullname'),
             'Email'          => $request->input('email'),
@@ -35,10 +32,7 @@ class SignupController
             'field'          => null,
         ]);
 
-        // Oturum başlat
         Session::put('user', $user->toArray());
-
-        // Yönlendir
         return redirect('/Information');
     }
 }

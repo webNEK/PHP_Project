@@ -34,7 +34,7 @@
                     <div class="note-item empty">No notes yet.</div>
                 @else
                     @foreach($posts as $post)
-                        <div class="note-item">
+                        <div c  lass="note-item">
                              {{ $post->Title }}
                                 <span class="note-span"style="">
                                     {{ $post->status }}

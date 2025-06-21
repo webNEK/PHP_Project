@@ -12,7 +12,6 @@ class LoginController
     {
         $email = $request->input('email', '');
         $password = $request->input('password', '');
-
         $user = Kullanicilar::getByEmail($email);
         if ($user && Hash::check($password, $user->PasswordHash)) 
         {
@@ -26,10 +25,11 @@ class LoginController
                 ];
                 $response->withCookie(cookie('remembered_login', json_encode($loginData), 60*24));
             } else {
-                $response->withCookie(cookie('remembered_login', '', -1)); // Cookie sil
+                $response->withCookie(cookie('remembered_login', '', -1));
             }
             return $response;
         }
+        return redirect('/Login')->withErrors(['email' => 'Invalid email or password.']);
     }
 
 }

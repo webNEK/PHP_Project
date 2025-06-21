@@ -45,7 +45,7 @@
                     <div class="carousel-content">
                         <div class="carousel-title"><?php echo e($post->Title); ?></div>
                         <div class="carousel-snippet" style="color:#222; font-size:14px; margin-bottom:10px;">
-                            <?php echo e(\Illuminate\Support\Str::limit($post->Content, 100)); ?>
+                            <?php echo e(Str::limit($post->Content, 100)); ?>
 
                         </div>
                         <a href="<?php echo e(url('/Read?id='.$post->PostID)); ?>" class="carousel-readmore">

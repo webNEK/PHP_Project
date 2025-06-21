@@ -23,9 +23,11 @@
 
                     {{-- Hata mesajları --}}
                     @if ($errors->any())
-                        <div style="color:red; margin-bottom:10px;">
+                        <div style="color:red; margin-bottom:10px; top: 20px;">
                             @foreach ($errors->all() as $error)
-                                <div>{{ $error }}</div>
+                                <script>
+                                    alert("{{ $error }}");
+                                </script>
                             @endforeach
                         </div>
                     @endif
@@ -35,14 +37,14 @@
                         <div class="fullname-input">
                             <label for="fullname" class="full-name">Full Name</label>
                             <div class="nameinp">
-                                <input type="text" id="fullname" name="fullname" class="input" placeholder="Enter your Full Name here" value="{{ old('fullname') }}" required>
+                                <input type="text" id="fullname" name="fullname" class="input" placeholder="Enter your Full Name here"  required>
                             </div>
                         </div>
 
                         <div class="email-input">
                             <label for="email" class="email">Email</label>
                             <div class="emailinp">
-                                <input type="email" id="email" name="email" class="input" placeholder="Enter your Email here" value="{{ old('email') }}" required>
+                                <input type="email" id="email" name="email" class="input" placeholder="Enter your Email here"  required>
                             </div>
                         </div>
 
